@@ -61,7 +61,7 @@ module Decidim::Referral
         )
         response = register user
         created_user = Decidim::User.last
-        byebug
+        expect(created_user.referral_token.length).to be > 16
       end
     end
   end

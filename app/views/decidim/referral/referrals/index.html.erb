@@ -1,0 +1,66 @@
+<% add_decidim_page_title(t("my_referrals", scope: "layouts.decidim.referrals")) %>
+<% content_for(:subtitle) { t("my_referrals", scope: "layouts.decidim.referrals") } %>
+<label class="row expanded callout large secondary" for="js_copy_paste" style="border-left: 0;">
+  <h2><%= t("spread", scope: "layouts.decidim.referrals") %> </h2>
+  <div class="input-group">
+    <span style="opacity:0.8;" class="placeholder" id="js_copy_paste--status"><%= t("actions.copy", scope: "layouts.decidim.referrals") %></span>
+    <input type="text" value="<%= referal_link %>" id="js_copy_paste" style="width:100%" />
+  </div>
+</label>
+
+<div  style="margin-top: 2rem;">
+  <p class="lead"><%= t("lead_html", scope: "layouts.decidim.referrals").html_safe %> </p>
+  <% if current_user.invited_by_id? %>
+    <p><%= t("invited_by_html", scope: "layouts.decidim.referrals", invited_by: current_user.invited_by.nickname,
+      invited_by_path: decidim.profile_path(nickname: current_user.invited_by.nickname)).html_safe %> </p>
+  <% end %>
+</div>
+
+<% if referral_scoring.size > 0 %>
+<div  style="margin-top: 2rem;">
+  <h2><%= t("results", scope: "layouts.decidim.referrals", count: referral_scoring_count) %> </h2>
+  <table class="table">
+  <thead>
+  <tr>
+    <th><%= t("table_headings.nickname", scope: "layouts.decidim.referrals") %></th>
+    <th><%= t("table_headings.confirmed_at", scope: "layouts.decidim.referrals") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% referral_scoring.each do |referral| %>
+    <tr>
+    
+      <td><a href="<%= decidim.profile_path(nickname: referral.nickname) %>"><%= referral.nickname %></a></td>
+      <td><%= l(referral.confirmed_at, format: :short) %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+  <%= t("score_html", scope: "layouts.decidim.referrals", count: referral_scoring_count).html_safe %>
+</div>
+<% end %>
+<script type="text/javascript">
+  document.addEventListener(
+    'click',
+    function (event) {
+      // Only fire if the target has id copy
+      if (!event.target.matches('#js_copy_paste')) return;
+
+      if (!navigator.clipboard) {
+        // Clipboard API not available
+        return;
+      }
+      const text = event.target.value;
+      try {
+        navigator.clipboard.writeText(text);
+        document.getElementById('js_copy_paste--status').innerText = '<%= t("actions.copied", scope: "layouts.decidim.referrals") %>';
+        setTimeout(function () {
+          document.getElementById('js_copy_paste--status').innerText = '<%= t("actions.copy", scope: "layouts.decidim.referrals") %>';
+        }, 1200);
+      } catch (err) {
+        console.error('Failed to copy!', err);
+      }
+    },
+    false
+  );
+</script>

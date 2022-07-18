@@ -4,3 +4,34 @@ en:
     components:
       referral:
         name: Referral
+  layouts:
+    decidim:
+      user_menu:
+        referrals: "Referrals"
+      user_profile:
+        user_referrals: "My Referrals"
+      referrals:
+        my_referrals: "My Referrals"
+        spread: "Copy your referral link"
+        results: "Your past referrals (%{count})"
+        table_headings:
+          nickname: "Invited User"
+          confirmed_at: "Joining Date"
+        score_html: "You brought us <strong>%{count}</strong> users"
+        lead_html: 
+          |
+            You help us to grow, and we want to show you our gratitude.
+            Our referral program is quiet simple:
+            <ol>
+              <li>Use your referral link to invite someone.</li>
+              <li>When he/she accesses your referral link, a cookie will store the information you invited him</li>
+              <li>Upon registering, your referral score increase.</li>
+            </ol>
+
+            Please note, referral score only count referrals that have confirmed their email ;).
+        invited_by_html:
+          |
+            As an example, you where invited by <a href="%{invited_by_path}">%{invited_by}</a>
+        actions:
+          copied: "Copied to clipboard, you can spread the world"
+          copy: "Click to copy to clipboard"
