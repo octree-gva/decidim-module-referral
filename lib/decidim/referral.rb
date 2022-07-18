@@ -12,3 +12,9 @@ module Decidim
   module Referral
   end
 end
+
+Decidim.register_global_engine(
+  :decidim_referral,
+  ::Decidim::Referral::Engine,
+  at: "/referrals"
+)

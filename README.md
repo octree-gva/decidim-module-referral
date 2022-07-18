@@ -31,6 +31,8 @@ Then execute:
 
 ```bash
 bundle
+bundle exec rails decidim_referral:install:migrations
+bundle exec rails db:migrate
 ```
 
 ## Testing
