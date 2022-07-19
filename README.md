@@ -24,7 +24,7 @@ A referral module, sponsored by the [Mkutano Community](mkutano.community).
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "decidim-referral", git: "https://github.com/octree-gva/decidim-referral"
+gem "decidim-referral", git: "https://github.com/octree-gva/decidim-module-referral"
 ```
 
 Then execute:

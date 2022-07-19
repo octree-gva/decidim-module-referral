@@ -22,7 +22,9 @@ module Decidim
       config.to_prepare do
         Decidim::User.include(Decidim::Referral::UserOverride)
         Decidim::WelcomeNotificationEvent.include(Decidim::Referral::WelcomeNotificationEvent)
-        Decidim::CreateRegistration.include(Decidim::Referral::RegistrationOverrides)
+        Decidim::CreateRegistration.module_eval do 
+            prepend Decidim::Referral::RegistrationOverrides
+        end
         routing = Decidim::Referral::Engine.routes.url_helpers
         Decidim.menu :user_menu do |menu|
           menu.item(

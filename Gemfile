@@ -17,6 +17,7 @@ group :development, :test do
   gem "decidim-dev", "~> 0.24.3"
 end
 
+
 group :test do
   gem 'rspec-rails', '~> 3.9.1'
 end
