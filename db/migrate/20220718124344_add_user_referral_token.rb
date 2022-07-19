@@ -1,6 +1,9 @@
 class AddUserReferralToken < ActiveRecord::Migration[5.2]
   def change
     add_column :decidim_users, :referral_token, :string
-
+    Decidim::User.all.each do |user|
+      user.set_referral_token!
+      user.save
+    end
   end
 end

@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/octree-gva/decidim-module-mkutano-extra_user_fields
-  revision: 5929865f07f01d8735c612dfbe67681fa4c386a7
-  branch: release/0.24-stable
+  revision: 02dcef495623f1febe77418ca454581abf504ac3
+  branch: main
   specs:
     decidim-extra_user_fields (0.24.3)
       country_select (~> 4.0)

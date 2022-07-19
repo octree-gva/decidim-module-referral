@@ -17,12 +17,9 @@ group :development, :test do
   gem "decidim-dev", "~> 0.24.3"
 end
 
+
 group :test do
   gem 'rspec-rails', '~> 3.9.1'
-  gem "decidim-extra_user_fields", 
-    git: "https://github.com/octree-gva/decidim-module-mkutano-extra_user_fields",
-    branch: "release/0.24-stable"
-
 end
 
 group :development do
