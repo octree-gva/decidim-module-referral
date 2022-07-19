@@ -23,6 +23,9 @@ module Decidim
         Decidim::User.include(Decidim::Referral::UserOverride)
         Decidim::WelcomeNotificationEvent.include(Decidim::Referral::WelcomeNotificationEvent)
         Decidim::CreateRegistration.include(Decidim::Referral::RegistrationOverrides)
+        if Object.const_defined?("Decidim::ExtraUserFields")
+          Decidim::ExtraUserFields::CommandsOverrides.include(Decidim::Referral::RegistrationOverrides)
+        end
         routing = Decidim::Referral::Engine.routes.url_helpers
         Decidim.menu :user_menu do |menu|
           menu.item(
