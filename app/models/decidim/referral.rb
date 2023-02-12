@@ -2,6 +2,7 @@
 
 module Decidim
   module Referral
+    
     def self.included(base)
       base.send(:extend, ClassMethods)
     end
